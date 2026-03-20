@@ -237,7 +237,7 @@ getgenv().wizprivate = {
     ['Speed Modifications'] = { -- Modifies your speed, works universally.
         ['Enabled'] = true, -- determines if speed should work ( toggle wont work if its on false either )
         ['Normal'] = { -- normal player conditions
-            ['Multiplier'] = 2
+            ['Multiplier'] = 50
         },
         ['Low Health'] = { -- checks if player is under 35 health and if so it just makes it ur speed choice
             ['Health Threshold'] = 35,
