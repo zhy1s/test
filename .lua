@@ -37,7 +37,7 @@ getgenv().wizprivate = {
             ['Z'] = 0
         },
         ['FOV'] = {
-            ['Show FOV'] = false, -- Visualize FOV, use this only if you're testing FOV's. Visualization = Red
+            ['Show FOV'] = true, -- Visualize FOV, use this only if you're testing FOV's. Visualization = Red
             ["X Left"] = 12,
             ["X Right"] = 12,
             ["Y Upper"] = 12,
@@ -87,7 +87,7 @@ getgenv().wizprivate = {
         }
     },
     ['Camera Aimbot'] = {
-        ['Enabled'] = false,
+        ['Enabled'] = true,
         ['Mode'] = "Toggle", -- Toggle / Hold
         ['HitPart'] = "Head", -- Closest Point // R15
         ['Closest Point'] = {
@@ -134,7 +134,7 @@ getgenv().wizprivate = {
         },
         ['FOV'] = {
             ['Radius'] = "155",
-            ['Show FOV'] = false -- White circle that centers to ur
+            ['Show FOV'] = true -- White circle that centers to ur
         }
     },
     ['Trigger Bot'] = {
