@@ -21,7 +21,7 @@ getgenv().wizprivate = {
         ['Knock Check'] = true,
         ['Crew Check'] = true,
         ['Self Knock Check'] = true,
-        ['Forcefield Check'] = true
+        ['Forcefield Check'] = false
     },
     ['Silent Aimbot'] = {
         ['Enabled'] = true, -- Silent Aimbot toggle
@@ -38,12 +38,12 @@ getgenv().wizprivate = {
         },
         ['FOV'] = {
             ['Show FOV'] = true, -- Visualize FOV, use this only if you're testing FOV's. Visualization = Red
-            ["X Left"] = 12,
-            ["X Right"] = 12,
-            ["Y Upper"] = 12,
-            ["Y Lower"] = 12,
-            ["Z Left"] = 12,
-            ["Z Right"] = 12
+            ["X Left"] = 6,
+            ["X Right"] = 6,
+            ["Y Upper"] = 6,
+            ["Y Lower"] = 6,
+            ["Z Left"] = 6,
+            ["Z Right"] = 6
         },
         ['Weapon Configuration'] = { -- Configured via Weapons
             ['Enabled'] = false,
