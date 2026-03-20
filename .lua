@@ -28,7 +28,7 @@ getgenv().wizprivate = {
         ['HitPart'] = "Closest Point", 
         ['Closest Point'] = {
             ['Mode'] = 'Advanced', -- Basic // Advanced
-            ['Scale'] = 5.5, -- determines how spread out ur points are 0 = super spaced out, 1 = super centered onto the torso
+            ['Scale'] = 0.5, -- determines how spread out ur points are 0 = super spaced out, 1 = super centered onto the torso
             ['Density'] = 4 -- determines the density of the 3D grid so 4 = 4 x 4 x 4 which is 64 points per part // WILL LOWER UR FPS IF U PUT THIS TOO HIGH
         },
         ['Prediction'] = { -- Predicts Movement
@@ -75,7 +75,7 @@ getgenv().wizprivate = {
         }
     },
     ['Anti Curve'] = { -- Checks Angles via gun barrels to see if silent aim should activate
-        ['Enabled'] = true,
+        ['Enabled'] = false,
         ['Angle'] = 0.5,
         ['Weapon Configuration'] = { -- Configurable Angles via different weapons.
             ['Enabled'] = true,
