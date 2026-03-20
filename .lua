@@ -203,23 +203,6 @@ for _, path in next, library.folders do
     makefolder(library.directory .. path)
 end 
 
-writefile("main.ttf", game:HttpGet("https://github.com/zhy1s/storage/raw/refs/heads/main/fs-tahoma-8px.ttf"))
-
-local tahoma = {
-    name = "SmallestPixel7",
-    faces = {
-        {
-            name = "Regular",
-            weight = 400,
-            style = "normal",
-            assetId = getcustomasset("main.ttf")
-        }
-    }
-}
-
-writefile("main_encoded.ttf", http_service:JSONEncode(tahoma))
-
-library.font = Font.new(getcustomasset("main_encoded.ttf"), Enum.FontWeight.Regular)
 
 local config_holder 
 -- 
