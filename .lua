@@ -4,8 +4,8 @@ getgenv().wizprivate = {
         ["Key"] = "keyhere" -- Luarmor Key's.
     },
     ["Binds"] = { -- Keybinds for certain things
-        ['Select'] = "C", -- Select // Target Keybind
-        ['Camera Aimbot'] = "C", -- Camera Aimbot Toggle
+        ['Select'] = "B", -- Select // Target Keybind
+        ['Camera Aimbot'] = "E", -- Camera Aimbot Toggle
         ['Triggerbot'] = "C", -- Triggerbot Activation Bind
         ['Speed'] = "X" -- Speed Modifications Toggle
     },
@@ -46,7 +46,7 @@ getgenv().wizprivate = {
             ["Z Right"] = 12
         },
         ['Weapon Configuration'] = { -- Configured via Weapons
-            ['Enabled'] = false,
+            ['Enabled'] = true,
             ['Shotguns'] = {
                 ["X Left"] = 1.011, ["X Right"] = 1.62,
                 ["Y Upper"] = 2.025, ["Y Lower"] = 3.225,
@@ -75,7 +75,7 @@ getgenv().wizprivate = {
         }
     },
     ['Anti Curve'] = { -- Checks Angles via gun barrels to see if silent aim should activate
-        ['Enabled'] = false,
+        ['Enabled'] = true,
         ['Angle'] = 0.5,
         ['Weapon Configuration'] = { -- Configurable Angles via different weapons.
             ['Enabled'] = true,
@@ -89,7 +89,7 @@ getgenv().wizprivate = {
     ['Camera Aimbot'] = {
         ['Enabled'] = true,
         ['Mode'] = "Toggle", -- Toggle / Hold
-        ['HitPart'] = "Head", -- Closest Point // R15
+        ['HitPart'] = "Closet Point", -- Closest Point // R15
         ['Closest Point'] = {
             ['Mode'] = 'Advanced', -- Basic // Advanced
             ['Scale'] = 0.09, -- 1.0 = most centered (tiny points around center), 0.0 = most spread out (full part size)
@@ -97,11 +97,11 @@ getgenv().wizprivate = {
         },
         ['Smoothing'] = { -- Determines how smooth your Camera Aimbot is, the higher the more blatant the lower the more legit etc.
             ['Enabled'] = true,
-            ['X'] = 0.587, -- Smoothness via Side to Side Movement
-            ['Y'] = 0.539 -- Smoothness via Jumping
+            ['X'] = 0.387, -- Smoothness via Side to Side Movement
+            ['Y'] = 0.439 -- Smoothness via Jumping
         },
         ['Range Smoothing'] = { -- determines smoothness based on distance
-            ['Enabled'] = true,
+            ['Enabled'] = false,
             ['Close'] = {
                 ['X'] = 0.8,
                 ['Y'] = 0.75
