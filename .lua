@@ -4,7 +4,7 @@ getgenv().wizprivate = {
         ["Key"] = "keyhere" -- Luarmor Key's.
     },
     ["Binds"] = { -- Keybinds for certain things
-        ['Select'] = "", -- Select // Target Keybind
+        ['Select'] = "E", -- Select // Target Keybind
         ['Camera Aimbot'] = "E", -- Camera Aimbot Toggle
         ['Triggerbot'] = "", -- Triggerbot Activation Bind
         ['Speed'] = "X" -- Speed Modifications Toggle
