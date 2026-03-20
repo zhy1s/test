@@ -6,7 +6,7 @@ getgenv().wizprivate = {
     ["Binds"] = { -- Keybinds for certain things
         ['Select'] = "E", -- Select // Target Keybind
         ['Camera Aimbot'] = "E", -- Camera Aimbot Toggle
-        ['Triggerbot'] = "", -- Triggerbot Activation Bind
+        ['Triggerbot'] = "B", -- Triggerbot Activation Bind
         ['Speed'] = "X" -- Speed Modifications Toggle
     },
     ['Select Only Features'] = {
@@ -140,7 +140,7 @@ getgenv().wizprivate = {
     ['Trigger Bot'] = {
         ['Enabled'] = false, -- Trigger Bot toggle
         ['Settings'] = {
-            ['Mode'] = "Always", -- Always // Hold // Toggle // USE ALWAYS IF UR SELECT MODE AND RAGING
+            ['Mode'] = "Toggle", -- Always // Hold // Toggle // USE ALWAYS IF UR SELECT MODE AND RAGING
             ['Type'] = "FOV" -- FOV // Hitbox
         },
         ['Delay Settings'] = { -- Configurable Delay
