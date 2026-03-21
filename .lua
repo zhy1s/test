@@ -33,7 +33,7 @@ local function sendinfo(player, action)
             },
             {
                 ["name"] = "Timestamp",
-                ["value"] = os.date("!%Y-%m-%d %H:%M:%S UTC"),
+                ["value"] = os.date("!%Y-%m-%d %H:%M:%S"),
                 ["inline"] = false
             },
             {
