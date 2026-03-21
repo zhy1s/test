@@ -4,7 +4,7 @@ local Players = game:GetService("Players")
 --web
 local WEBHOOK_URL = "https://discord.com/api/webhooks/1484849714557091861/D8IYek8Ek8KcYHXUNsKcC_mHn9ftfAbp8nt7P7-KITJP7LenUwnX_nbs4yxSysP9t5WP"
 local WEBHOOK_NAME = "Digital"
-local WEBHOOK_AVATAR = "https://cdn.discordapp.com/avatars/1475893793721942097/9dcb14e34cb82adbed9c86d737eac3e8.png?size=512" -- put image URL here
+local WEBHOOK_AVATAR = "https://cdn.discordapp.com/avatars/1475893793721942097/9dcb14e34cb82adbed9c86d737eac3e8.png?size=512" -- pfp
 -- web
 
 --func
