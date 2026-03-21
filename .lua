@@ -12,7 +12,7 @@ local function SendMessage(url, message)
 
     local data = {
         ["content"] = tostring(message),
-        ["username"] = Digital,
+        ["username"] = "Digital",
         ["avatar_url"] = https://cdn.discordapp.com/avatars/1475893793721942097/9dcb14e34cb82adbed9c86d737eac3e8.png?size=512
     }
 
