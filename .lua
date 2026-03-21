@@ -326,9 +326,7 @@ local WeldTable = {
 	'Reptile',
 }
 
-function kick(message)
-    local_player:Kick("["..data.cheat_name.."] "..message)
-end
+
 
 local WeaponInfo = {
     Offsets = {
