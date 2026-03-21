@@ -1,4 +1,4 @@
-
+print("loaded")
 shared.Script = {
     ['Framework'] = {
         ['Version'] = "v0.3",
