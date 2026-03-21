@@ -17,7 +17,7 @@ shared.Script = {
             ['ESP'] = "B",
         },
 
-        ['Indicators'] = false,
+        ['Indicators'] = true,
         ['Chat Commands'] = true,
     },
 
@@ -140,7 +140,7 @@ shared.Script = {
     },
 
     ['Lighting Modifications'] = {
-        ['Enabled'] = false,
+        ['Enabled'] = true,
         ['Ambient'] = Color3.fromRGB(247, 201, 255),
         ['Brightness'] = 2.2,
         ['Color Brightness'] = 0.1,
@@ -155,7 +155,7 @@ shared.Script = {
 
     ['Self Modifications'] = {
         ['Speed'] = {
-            ['Enabled'] = false,
+            ['Enabled'] = true,
             ['Keybind'] = { ['Enabled'] = true, ['Mode'] = "Toggle" },
             ['Multiplier'] = 15,
         },
