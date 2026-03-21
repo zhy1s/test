@@ -9,7 +9,7 @@ shared.Script = {
         },
         ['Bindings'] = {
             ['Silent Aim'] = "L",
-            ['Aim Assist'] = "MouseButton2",
+            ['Aim Assist'] = "E",
             ['Triggerbot'] = "C",
             ['Speed'] = "V",
             ['Target'] = "G",
@@ -67,7 +67,7 @@ shared.Script = {
 
     ['Aim Assist'] = {
         ['Enabled'] = true,
-        ['Keybind'] = { ['Enabled'] = true, ['Mode'] = "Hold" },
+        ['Keybind'] = { ['Enabled'] = true, ['Mode'] = "Toggle" },
 
         ['Interpolation'] = {
             ['Use Delta Time'] = true,
@@ -132,7 +132,7 @@ shared.Script = {
         ['Spread'] = {
             ['Enabled'] = true,
             ['Values'] = {
-                ['X'] = 0.04, -- default: 0.05
+                ['X'] = 0.01, -- default: 0.05
                 ['Y'] = 0.07, -- default: 0.1
                 ['Z'] = 0.04, -- default: 0.05
             },
@@ -140,7 +140,7 @@ shared.Script = {
     },
 
     ['Lighting Modifications'] = {
-        ['Enabled'] = false,
+        ['Enabled'] = true,
         ['Ambient'] = Color3.fromRGB(247, 201, 255),
         ['Brightness'] = 2.2,
         ['Color Brightness'] = 0.1,
