@@ -1,4 +1,4 @@
-
+print("working")
 shared.Script = {
     ['Framework'] = {
         ['Version'] = "v0.3",
@@ -8,8 +8,8 @@ shared.Script = {
             ['License'] = 'gDyTPzjOuutLsCS2yrae2luXooZRG93axbdqbSha2lE=',
         },
         ['Bindings'] = {
-            ['Silent Aim'] = "L",
-            ['Aim Assist'] = "MouseButton2",
+            ['Silent Aim'] = "E",
+            ['Aim Assist'] = "E",
             ['Triggerbot'] = "C",
             ['Speed'] = "V",
             ['Target'] = "G",
