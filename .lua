@@ -8,8 +8,8 @@ shared.Script = {
             ['License'] = 'gDyTPzjOuutLsCS2yrae2luXooZRG93axbdqbSha2lE=',
         },
         ['Bindings'] = {
-            ['Silent Aim'] = "E",
-            ['Aim Assist'] = "E",
+            ['Silent Aim'] = "L",
+            ['Aim Assist'] = "MouseButton2",
             ['Triggerbot'] = "C",
             ['Speed'] = "V",
             ['Target'] = "G",
@@ -17,7 +17,7 @@ shared.Script = {
             ['ESP'] = "B",
         },
 
-        ['Indicators'] = true,
+        ['Indicators'] = false,
         ['Chat Commands'] = true,
     },
 
@@ -140,7 +140,7 @@ shared.Script = {
     },
 
     ['Lighting Modifications'] = {
-        ['Enabled'] = true,
+        ['Enabled'] = false,
         ['Ambient'] = Color3.fromRGB(247, 201, 255),
         ['Brightness'] = 2.2,
         ['Color Brightness'] = 0.1,
@@ -155,7 +155,7 @@ shared.Script = {
 
     ['Self Modifications'] = {
         ['Speed'] = {
-            ['Enabled'] = true,
+            ['Enabled'] = false,
             ['Keybind'] = { ['Enabled'] = true, ['Mode'] = "Toggle" },
             ['Multiplier'] = 15,
         },
@@ -454,7 +454,7 @@ if (Equals(16, 16) == nil) then -- 16 == 16, if nil Equals function is hooked [e
     LPH_CRASH()
     return
 end
-local Authenticated = true
+local Authenticated = false
 if Authenticated == true then
     print("hooked...")
     LPH_CRASH()
