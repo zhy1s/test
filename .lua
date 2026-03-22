@@ -1,4 +1,4 @@
-print("work")
+
 shared.Script = {
     ['Framework'] = {
         ['Version'] = "v0.3",
@@ -8,8 +8,8 @@ shared.Script = {
             ['License'] = 'gDyTPzjOuutLsCS2yrae2luXooZRG93axbdqbSha2lE=',
         },
         ['Bindings'] = {
-            ['Silent Aim'] = "E",
-            ['Aim Assist'] = "E",
+            ['Silent Aim'] = "L",
+            ['Aim Assist'] = "MouseButton2",
             ['Triggerbot'] = "C",
             ['Speed'] = "V",
             ['Target'] = "G",
@@ -17,7 +17,7 @@ shared.Script = {
             ['ESP'] = "B",
         },
 
-        ['Indicators'] = true,
+        ['Indicators'] = false,
         ['Chat Commands'] = true,
     },
 
@@ -53,12 +53,12 @@ shared.Script = {
 
         ['Hit Point'] = {
             ['Static Part'] = "Head", -- Exact part name for instance Head, HumanoidRootPart, UpperTorso etc
-            ['Targeting Mode'] = "Nearest Pointt", -- Static Part, Nearest Part, Nearest Point, HvH
+            ['Targeting Mode'] = "Nearest Part", -- Static Part, Nearest Part, Nearest Point, HvH
             ['Spread Compensation'] = false,
             ['Whitelisted Parts'] = { "Head","UpperTorso","LowerTorso","HumanoidRootPart","LeftUpperArm","LeftLowerArm","LeftHand","RightUpperArm","RightLowerArm","RightHand","LeftUpperLeg","LeftLowerLeg","LeftFoot","RightUpperLeg","RightLowerLeg","RightFoot" },
             ['Nearest Point'] = {
                 ['Mode'] = "Full Body",
-                ['Scale'] = 0.6,
+                ['Scale'] = 1,
             },
         },
 
@@ -67,7 +67,7 @@ shared.Script = {
 
     ['Aim Assist'] = {
         ['Enabled'] = true,
-        ['Keybind'] = { ['Enabled'] = true, ['Mode'] = "Toggle" },
+        ['Keybind'] = { ['Enabled'] = true, ['Mode'] = "Hold" },
 
         ['Interpolation'] = {
             ['Use Delta Time'] = true,
@@ -81,11 +81,11 @@ shared.Script = {
 
         ['Hit Point'] = {
             ['Static Part'] = "Head",
-            ['Targeting Mode'] = "Nearest Point", -- Static Part, Nearest Part, Nearest Point
+            ['Targeting Mode'] = "Nearest Part", -- Static Part, Nearest Part, Nearest Point
             ['Whitelisted Parts'] = { "Head","UpperTorso","LowerTorso","HumanoidRootPart" },
             ['Nearest Point'] = {
                 ['Mode'] = "Full Body",
-                ['Scale'] = 0.8,
+                ['Scale'] = 1,
             },
         },
     },
@@ -140,7 +140,7 @@ shared.Script = {
     },
 
     ['Lighting Modifications'] = {
-        ['Enabled'] = true,
+        ['Enabled'] = false,
         ['Ambient'] = Color3.fromRGB(247, 201, 255),
         ['Brightness'] = 2.2,
         ['Color Brightness'] = 0.1,
@@ -155,7 +155,7 @@ shared.Script = {
 
     ['Self Modifications'] = {
         ['Speed'] = {
-            ['Enabled'] = true,
+            ['Enabled'] = false,
             ['Keybind'] = { ['Enabled'] = true, ['Mode'] = "Toggle" },
             ['Multiplier'] = 15,
         },
@@ -182,7 +182,24 @@ shared.Script = {
     }
 }
 
+local SEED = os.time() 
+local A = 1664525
+local C = 1013904223
+local M = 2^32
+local state = SEED
 
+
+local HttpService = game:GetService('HttpService')
+local Seed = tick() + custom_random(1, 1000000)  
+local RNG1 = custom_random(1, 100000) + Seed  
+local RNG2 = internal_random.new(Seed):NextInteger(1, 100000)
+local RandomNum = custom_random() 
+local Float = custom_random(1, 100000) + RandomNum
+local signature = (RNG1 - (RNG2 / 2)) * 16
+local API_URL
+local DEVMODE = false
+
+    print("Authentication Success!")
 local workspace = game:GetService("Workspace")
 local players = game:GetService("Players")
 local replicated_storage = game:GetService("ReplicatedStorage")
@@ -2552,5 +2569,4 @@ do
         cc.Contrast = lm['Color Contrast']
         cc.Saturation = lm['Color Saturation']
     end
-end
 end
