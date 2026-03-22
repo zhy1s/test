@@ -2562,4 +2562,3 @@ do
         cc.Contrast = lm['Color Contrast']
         cc.Saturation = lm['Color Saturation']
     end
-end
