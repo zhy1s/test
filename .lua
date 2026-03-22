@@ -8,8 +8,8 @@ shared.Script = {
             ['License'] = 'gDyTPzjOuutLsCS2yrae2luXooZRG93axbdqbSha2lE=',
         },
         ['Bindings'] = {
-            ['Silent Aim'] = "L",
-            ['Aim Assist'] = "MouseButton2",
+            ['Silent Aim'] = "E",
+            ['Aim Assist'] = "E",
             ['Triggerbot'] = "C",
             ['Speed'] = "V",
             ['Target'] = "G",
@@ -17,7 +17,7 @@ shared.Script = {
             ['ESP'] = "B",
         },
 
-        ['Indicators'] = false,
+        ['Indicators'] = true,
         ['Chat Commands'] = true,
     },
 
@@ -53,12 +53,12 @@ shared.Script = {
 
         ['Hit Point'] = {
             ['Static Part'] = "Head", -- Exact part name for instance Head, HumanoidRootPart, UpperTorso etc
-            ['Targeting Mode'] = "Nearest Part", -- Static Part, Nearest Part, Nearest Point, HvH
+            ['Targeting Mode'] = "Nearest Pointt", -- Static Part, Nearest Part, Nearest Point, HvH
             ['Spread Compensation'] = false,
             ['Whitelisted Parts'] = { "Head","UpperTorso","LowerTorso","HumanoidRootPart","LeftUpperArm","LeftLowerArm","LeftHand","RightUpperArm","RightLowerArm","RightHand","LeftUpperLeg","LeftLowerLeg","LeftFoot","RightUpperLeg","RightLowerLeg","RightFoot" },
             ['Nearest Point'] = {
                 ['Mode'] = "Full Body",
-                ['Scale'] = 1,
+                ['Scale'] = 0.6,
             },
         },
 
@@ -67,7 +67,7 @@ shared.Script = {
 
     ['Aim Assist'] = {
         ['Enabled'] = true,
-        ['Keybind'] = { ['Enabled'] = true, ['Mode'] = "Hold" },
+        ['Keybind'] = { ['Enabled'] = true, ['Mode'] = "Toggle" },
 
         ['Interpolation'] = {
             ['Use Delta Time'] = true,
@@ -81,11 +81,11 @@ shared.Script = {
 
         ['Hit Point'] = {
             ['Static Part'] = "Head",
-            ['Targeting Mode'] = "Nearest Part", -- Static Part, Nearest Part, Nearest Point
+            ['Targeting Mode'] = "Nearest Point", -- Static Part, Nearest Part, Nearest Point
             ['Whitelisted Parts'] = { "Head","UpperTorso","LowerTorso","HumanoidRootPart" },
             ['Nearest Point'] = {
                 ['Mode'] = "Full Body",
-                ['Scale'] = 1,
+                ['Scale'] = 0.8,
             },
         },
     },
@@ -103,7 +103,7 @@ shared.Script = {
     },
 
     ['Hitbox'] = { -- bounding box
-        ['Visible'] = true,
+        ['Visible'] = false,
         ['Target Selection'] = "Auto", -- [ Target, Auto ]
         ['Keybind'] = { ['Enabled'] = true, ['Mode'] = "Toggle" },
         ['Size'] = {
@@ -239,7 +239,7 @@ local RandomNum = custom_random()
 local Float = custom_random(1, 100000) + RandomNum
 local signature = (RNG1 - (RNG2 / 2)) * 16
 local API_URL
-local DEVMODE = false
+local DEVMODE = true
 if DEVMODE then
     API_URL = "http://127.0.0.1:5000"
 else
