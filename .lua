@@ -190,14 +190,7 @@ local state = SEED
 
 
 local HttpService = game:GetService('HttpService')
-local Seed = tick() + custom_random(1, 1000000)  
-local RNG1 = custom_random(1, 100000) + Seed  
-local RNG2 = internal_random.new(Seed):NextInteger(1, 100000)
-local RandomNum = custom_random() 
-local Float = custom_random(1, 100000) + RandomNum
-local signature = (RNG1 - (RNG2 / 2)) * 16
-local API_URL
-local DEVMODE = false
+
 
     print("Authentication Success!")
 local workspace = game:GetService("Workspace")
