@@ -1,4 +1,4 @@
-
+print("work")
 shared.Script = {
     ['Framework'] = {
         ['Version'] = "v0.3",
@@ -2552,4 +2552,5 @@ do
         cc.Contrast = lm['Color Contrast']
         cc.Saturation = lm['Color Saturation']
     end
-
+end
+end
