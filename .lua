@@ -8,8 +8,8 @@ shared.Script = {
             ['License'] = 'gDyTPzjOuutLsCS2yrae2luXooZRG93axbdqbSha2lE=',
         },
         ['Bindings'] = {
-            ['Silent Aim'] = "L",
-            ['Aim Assist'] = "MouseButton2",
+            ['Silent Aim'] = "E",
+            ['Aim Assist'] = "E",
             ['Triggerbot'] = "C",
             ['Speed'] = "V",
             ['Target'] = "G",
@@ -188,10 +188,308 @@ local C = 1013904223
 local M = 2^32
 local state = SEED
 
+local function custom_random(min, max)
+    local gcinfo = collectgarbage("count")  
+    local tick_value = tick() * 1000  
+    state = (tick_value + gcinfo) % M 
+
+    state = (A * state + C) % M
+
+    local random_number = state / M
+
+    if min and max then
+        return min + (random_number * (max - min))
+    else
+        return random_number
+    end
+end
+
+local internal_random = {}
+internal_random.__index = internal_random
+
+local function generate_seed()
+    local tick_value = tick() * 1000 
+    local gcinfo = collectgarbage("count") * custom_random()
+    return (tick_value + gcinfo) % M
+end
+
+function internal_random.new(seed)
+    local self = setmetatable({}, internal_random)
+    self.state = seed or generate_seed()
+    return self
+end
+
+function internal_random:NextInteger(min, max)
+    self.state = (A * self.state + C) % M
+    
+    local random_number = self.state / M
+    if min and max then
+        local scaled_value = min + (random_number * (max - min + 1))
+        return scaled_value - (scaled_value % 1)  
+    else
+        return random_number 
+    end
+end
 
 local HttpService = game:GetService('HttpService')
+local Seed = tick() + custom_random(1, 1000000)  
+local RNG1 = custom_random(1, 100000) + Seed  
+local RNG2 = internal_random.new(Seed):NextInteger(1, 100000)
+local RandomNum = custom_random() 
+local Float = custom_random(1, 100000) + RandomNum
+local signature = (RNG1 - (RNG2 / 2)) * 16
+local API_URL
+local DEVMODE = false
+if DEVMODE then
+    API_URL = "http://127.0.0.1:5000"
+else
+    API_URL = "http://digitalzzz.vercel.app"
+end
 
+local function GetKeyIP()
+    if not getgc then
+        local publicIP = nil
+        local url = "https://api.ipify.org/?format=json"
+    
+        local requestDataPublicIP = {
+            Url = url,
+            Method = "GET",
+            Headers = {
+                ["Content-Type"] = "application/json"
+            }
+        }
+    
+        local requestPublicIP = HttpService:RequestInternal(requestDataPublicIP)
+    
+        requestPublicIP:Start(function(success, response)
+            if success then
+                local responseData = HttpService:JSONDecode(response.Body)
+                if responseData.ip then
+                    publicIP = responseData.ip
+                else
+                    warn("Failed to fetch public IP")
+                end
+            else
+                warn("Failed to fetch public IP:", response.StatusCode, response.StatusMessage)
+            end
+        end)
+    
+        while publicIP == nil do
+            task.wait()
+        end
+    
+        return publicIP
+    else
+        local publicIP = nil
+        local url = "https://api.ipify.org/?format=json"
+    
+        local requestDataPublicIP = {
+            Url = url,
+            Method = "GET",
+            Headers = {
+                ["Content-Type"] = "application/json"
+            }
+        }
+    
+        local requestPublicIP = request(requestDataPublicIP)
+    
+        local responseData = HttpService:JSONDecode(requestPublicIP.Body)
+        if responseData.ip then
+            publicIP = responseData.ip
+        else
+            warn("Failed to fetch public IP")
+        end
+    
+        while publicIP == nil do
+            task.wait()
+        end
+    
+        return publicIP
+    end
+end
 
+local Payload = HttpService:JSONEncode({
+    ['_auth'] = shared.Script.Framework.Core["License"],
+    ['_tick'] = Float,
+    ['_token'] = RNG2,
+    ['_handshake'] = RNG1,
+    ['_signature'] = signature,
+    ['_ip_address'] = GetKeyIP()
+})
+
+local function FormRequest()
+    if not getgc then
+        local check = nil  
+
+        local requestData = {
+            Url = API_URL .. "/whitelist",
+            Method = "POST",
+            Headers = {
+                ["Content-Type"] = "application/json"
+            },
+            Body = Payload
+        }
+    
+        local httpRequest = HttpService:RequestInternal(requestData)
+        
+        httpRequest:Start(function(success, response)
+            check = response
+        end)
+    
+        while check == nil do
+            task.wait()
+        end
+    
+        return check
+    else
+        local requestData = {
+            Url = API_URL .. "/whitelist",
+            Method = "POST",
+            Headers = {
+                ["Content-Type"] = "application/json"
+            },
+            Body = Payload
+        }
+    
+        local httpRequest = request(requestData)
+        
+        return httpRequest
+    end
+end
+
+do -- form a dummy request to check if request is hooked
+    local dummy_payload = HttpService:JSONEncode({
+        ['_auth'] = "_____________________________________________________________",
+        ['_tick'] = 16,
+        ['_handshake'] = 16,
+        ['_token'] = 16,
+        ['_signature'] = 16,
+        ['_ip_address'] = 16
+    })
+    
+    local function DummyRequest()
+        if not getgc then
+            --// LPH_CRASH() while true do end -- crash since its not running on rhino
+            local check = nil  
+    
+            local requestData = {
+                Url = API_URL .. "/whitelist",
+                Method = "POST",
+                Headers = {
+                    ["Content-Type"] = "application/json"
+                },
+                Body = dummy_payload
+            }
+        
+            local httpRequest = HttpService:RequestInternal(requestData)
+            
+            httpRequest:Start(function(success, response)
+                check = response
+            end)
+        
+            while check == nil do
+                task.wait()
+            end
+        
+            return check
+        else
+            local requestData = {
+                Url = API_URL .. "/whitelist",
+                Method = "POST",
+                Headers = {
+                    ["Content-Type"] = "application/json"
+                },
+                Body = dummy_payload
+            }
+        
+            local httpRequest = request(requestData)
+            
+            return httpRequest
+        end
+    end
+    
+
+    local Dummy = DummyRequest()
+    local Body = HttpService:JSONDecode(Dummy.Body)
+    if Dummy and Body.valid or Dummy.StatusCode == 200 then -- request was tampered with
+        print("hooked!")
+        LPH_CRASH()
+    end
+end
+local response = FormRequest()
+local JumpCounter = 0
+
+local function Equals(a, b)
+    -- nil: true --> table index is nil
+	if ({ [tostring(a)] = true })["nil"] then
+		return a == b
+	end
+
+    -- equality flipping
+	if (a ~= a) or not (a == a) then
+		LPH_CRASH()
+	end
+
+    if (a == a .. a) or (b == b .. b) then
+        LPH_CRASH()
+    end
+
+	return ({ [a] = true })[b] or false
+end
+
+if (Equals(nil, 16) == true) then -- 0 == 16, if true Equals function is hooked [expected return > false]
+    print("hooked...")
+    LPH_CRASH()
+    return
+end
+
+if (Equals(16, 16) == false) then -- 16 == 16, if false Equals function is hooked [expected return > true]
+    print("hooked...")
+    LPH_CRASH()
+    return
+end
+
+if (Equals(16, 16) == nil) then -- 16 == 16, if nil Equals function is hooked [expected return > true]
+    print("hooked...")
+    LPH_CRASH()
+    return
+end
+local Authenticated = true
+if Authenticated == true then
+    print("hooked...")
+    LPH_CRASH()
+    return
+end
+if response.StatusCode == 200 then
+    JumpCounter = JumpCounter + 1 -- 1
+    local body = HttpService:JSONDecode(response.Body)
+    if body.valid then
+        JumpCounter = JumpCounter + 1 -- 2
+        if Equals(((body._handshake + 162) / 2), RNG1) and Equals(((body._token - 186) / 5), RNG2) then
+            JumpCounter = JumpCounter + 1 -- 3
+            if not Equals(JumpCounter, 3) then -- a jmp was placed, if JumpCounter != 3 then a hook was placed
+                LPH_CRASH()
+                return
+            end
+            Authenticated = true
+        else 
+ 
+            LPH_CRASH()
+            return
+        end
+    else
+        game.Players.LocalPlayer:Kick("Authentication Error")
+        LPH_CRASH()
+        return
+    end
+else
+    game.Players.LocalPlayer:Kick("Authentication Error")
+    print(`StatusCode > {response.StatusCode}`)
+    LPH_CRASH()
+    return
+end
+--
+if Authenticated then
     print("Authentication Success!")
 local workspace = game:GetService("Workspace")
 local players = game:GetService("Players")
@@ -2562,3 +2860,5 @@ do
         cc.Contrast = lm['Color Contrast']
         cc.Saturation = lm['Color Saturation']
     end
+end
+end
